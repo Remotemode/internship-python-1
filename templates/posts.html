@@ -6,19 +6,18 @@ Post List
 {% endblock %}
 
 {% block content %}
-<h1>Hello {{ name }}!</h1>
-{% for item in data %}
+
+{% for item in data['posts'] %}
 <div class="container">
     <div class="row">
-            {% for item in data %}
+            {% for item in data['posts'] %}
                 <div class="col-md-4">
                     <div class="item">
-                        <div class="item-comment"></div>
                         <div class="card" style="width: 18rem;">
-                          <img src="{{ item['image'] }}" class="card-img-top" alt="{{ item['title'] }}">
+                          <img src="{{ item['imageUrl'] }}" class="card-img-top" alt="{{ item['title'] }}">
                           <div class="card-body">
                             <h5 class="card-title"><a href="/post/{{ item['id'] }}">{{ item['title'] }}</a></h5>
-                            <p class="card-text">{{ {{ item['expertComment'] }} }}</p>
+                            <p class="card-text">{{ item['expertComment']|truncate(160) }}</p>
                           </div>
                         </div>
                     </div>
